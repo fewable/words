@@ -1,0 +1,19 @@
+version: '3'
+
+tasks:
+  run:
+    desc: run program
+    cmds:
+      - go run example/main.go
+
+  test:
+    desc: run tests and output coverage files
+    cmds:
+      - go test -v ./... -coverprofile=coverage.out
+      - go tool cover -func=coverage.out
+      - go tool cover -html=coverage.out -o coverage.html
+
+  open:
+    desc: open the project in the browser
+    cmds:
+      - open "https://github.com/fewable/words" || explorer.exe "https://github.com/fewable/words"
